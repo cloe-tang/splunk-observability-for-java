@@ -8,7 +8,7 @@ The following will be covered:
 4. Instrument Sample Java Application to send metrics and traces
 5. Enable Always On Profile
 
-Pre-requisite
+**Pre-requisite**
 1. An AWS account
 2. Sign up for Splunk Cloud Observability trial account
 
@@ -22,3 +22,4 @@ Configure the instance accordingly: (Instance Type: M5 Large; Root Volume: 50)
 
 Step 2: execute the following script to change password
 
+> sudo /opt/jboss-eap-7.4/bin/add-user.sh
