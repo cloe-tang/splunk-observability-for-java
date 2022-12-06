@@ -29,3 +29,5 @@ Step 2: execute the following script to change password
 Step 3: Access Jboss server at http://<ip-address>:9990
   
 <img width="932" alt="image" src="https://user-images.githubusercontent.com/58005106/205949002-f4de317c-fe0f-42df-8a9e-1d7c2b6e8b31.png">
+
+**Part 2 - Deploy Sample Java Application**
