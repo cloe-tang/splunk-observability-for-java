@@ -23,3 +23,9 @@ Configure the instance accordingly: (Instance Type: M5 Large; Root Volume: 50)
 Step 2: execute the following script to change password
 
 `sudo /opt/jboss-eap-7.4/bin/add-user.sh`
+
+<img width="816" alt="image" src="https://user-images.githubusercontent.com/58005106/205948506-00f6434a-b8d1-46f5-b924-25786fa7ee28.png">
+
+Step 3: Access Jboss server at http://<ip-address>:9990
+  
+<img width="932" alt="image" src="https://user-images.githubusercontent.com/58005106/205949002-f4de317c-fe0f-42df-8a9e-1d7c2b6e8b31.png">
