@@ -43,3 +43,12 @@ Step 3: Access to http://<ip-address>:8080/SampleWebApp. You should see the foll
 <img width="686" alt="image" src="https://user-images.githubusercontent.com/58005106/205953919-1cee8669-c6af-4199-b014-950ad15f75b4.png">
 
 <img width="1299" alt="image" src="https://user-images.githubusercontent.com/58005106/205954011-54cc668a-5c84-4a81-bbb3-8f4adc029bf4.png">
+  
+**Part 3 - Install Splunk Otel Collector**
+
+Step 1: Navigate to Splunk Observability portal. On the left navigation, click on data management.
+
+![image](https://user-images.githubusercontent.com/58005106/205959448-b0cff3c4-de63-4e13-a898-d767d7354ffa.png)
+
+
+
