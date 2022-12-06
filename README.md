@@ -16,5 +16,4 @@ Part 1 - Setup
 
 Step 1: Launch an instance using the "Red Hat JBoss Enterprise Application Platform v7.4 on Linux" image
 
-
-<img width="1256" alt="Screenshot 2022-12-06 at 10 49 35 PM" src="https://user-images.githubusercontent.com/58005106/205944112-e4d4692d-9c9a-4e19-9c17-ce57d3f10f0d.png">
+<img width="1226" alt="image" src="https://user-images.githubusercontent.com/58005106/205944309-28f9bec7-5442-4a08-86e8-7f54a133ca2e.png">
