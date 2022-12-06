@@ -22,4 +22,4 @@ Configure the instance accordingly: (Instance Type: M5 Large; Root Volume: 50)
 
 Step 2: execute the following script to change password
 
-> sudo /opt/jboss-eap-7.4/bin/add-user.sh
+`sudo /opt/jboss-eap-7.4/bin/add-user.sh`
