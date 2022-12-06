@@ -31,3 +31,15 @@ Step 3: Access Jboss server at http://<ip-address>:9990
 <img width="932" alt="image" src="https://user-images.githubusercontent.com/58005106/205949002-f4de317c-fe0f-42df-8a9e-1d7c2b6e8b31.png">
 
 **Part 2 - Deploy Sample Java Application**
+
+Step 1: Download the SampleWebApp.war 
+
+Step 2: In the Jboss server UI, click on Deployments at the top navigation. Drag and drop the war file in the left panel
+
+<img width="820" alt="image" src="https://user-images.githubusercontent.com/58005106/205953492-7c831095-3b7f-462d-84bc-9327e43f08d2.png">
+
+Step 3: Access to http://<ip-address>:8080/SampleWebApp. You should see the following:
+
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/58005106/205953919-1cee8669-c6af-4199-b014-950ad15f75b4.png">
+
+<img width="1299" alt="image" src="https://user-images.githubusercontent.com/58005106/205954011-54cc668a-5c84-4a81-bbb3-8f4adc029bf4.png">
