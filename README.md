@@ -12,7 +12,7 @@ Pre-requisite
 1. An AWS account
 2. Sign up for Splunk Cloud Observability trial account
 
-**Part 1 - Setup Jboss Server in AWS
+**Part 1 - Setup Jboss Server in AWS**
 
 Step 1: Launch an instance using the "Red Hat JBoss Enterprise Application Platform v7.4 on Linux" image
 
