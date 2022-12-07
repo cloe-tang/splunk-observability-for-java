@@ -62,6 +62,9 @@ Step 4: Navigate to Splunk Observability Portal. Under Infrastructure Monitoring
   
 ![image](https://user-images.githubusercontent.com/58005106/206099906-e3bcf4b1-9f98-4601-b710-bb74b463b560.png)
 
+Step 5: Click on the instance and you will be able to see the resources being monitored
   
+![image](https://user-images.githubusercontent.com/58005106/206100180-045578f9-6725-400c-91c0-1a3fbd6f294c.png)
 
+**Part 4 - Instrument Sample Java Application to send traces and metrics**
 
