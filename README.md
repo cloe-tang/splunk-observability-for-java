@@ -86,7 +86,7 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel
 - deployment.environment=lab -> Define environment
 - service.name=sampleApp -> Define service name
 - Dsplunk.profiler.enabled=true -> Enable AlwaysOn Profiling
-- -XX:StartFlightRecording -> Start JFR record. (If this is not set, no data will be sent to AlwaysOn Profiling
+- -XX:StartFlightRecording -> Start JFR record. (If this is not set, no data will be sent to AlwaysOn Profiling)
 
 ```  
 sudo systemctl restart jboss-eap` -> restart jboss
