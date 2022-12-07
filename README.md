@@ -40,7 +40,7 @@ Step 2: In the Jboss server UI, click on Deployments at the top navigation. Drag
 
 <img width="820" alt="image" src="https://user-images.githubusercontent.com/58005106/205953492-7c831095-3b7f-462d-84bc-9327e43f08d2.png">
 
-Step 3: Access to http://<ip-address>:8080/SampleWebApp. You should see the following:
+Step 3: Access to http://ip-address:8080/SampleWebApp. You should see the following:
 
 <img width="686" alt="image" src="https://user-images.githubusercontent.com/58005106/205953919-1cee8669-c6af-4199-b014-950ad15f75b4.png">
 
