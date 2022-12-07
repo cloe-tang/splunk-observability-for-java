@@ -68,4 +68,8 @@ Step 5: Click on the instance and you will be able to see the resources being mo
 
 **Part 4 - Instrument Sample Java Application to send traces and metrics**
 
-Step 1: Go to the JBoss server. Navigate to /opt/
+Step 1: Go to the JBoss server. Navigate to /opt/jboss-eap-7.4/bin. Edit the standalone.conf file. Add the following configuration at the end of the file and restart jboss
+
+`JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=lab -Dsplunk.profiler.enabled=true -XX:StartFlightRecording"`
+  
+`sudo systemctl restart jboss-eap` -> restart jboss
