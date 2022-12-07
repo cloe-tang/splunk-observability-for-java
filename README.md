@@ -84,5 +84,17 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel
 ```  
 sudo systemctl restart jboss-eap` -> restart jboss
 ```
+
+Step 3: Go to Splunk Observability Cloud. Click on APM at the left navigation bar. You should see your environment created and the services monitored
+
+![image](https://user-images.githubusercontent.com/58005106/206112539-d9aa6412-3e44-4aee-a0ad-9dc77759dacb.png)
+
+Step 4: Click on Explore at the right panel. You should see you Service flow. Currently there is only one service. 
+
+![image](https://user-images.githubusercontent.com/58005106/206112819-064ed999-233d-466b-9615-27fb0ccbb655.png)
+
+Step 5: Go back to APM page. Click on AlwaysOn Profiling at the bottom right panel. Select the sampleApp service. You should see the following
   
+![image](https://user-images.githubusercontent.com/58005106/206113262-0aab1d92-18a5-4fae-8a75-06757c54d888.png)
+
   
