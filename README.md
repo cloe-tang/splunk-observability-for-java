@@ -30,7 +30,7 @@ Step 3: Access Jboss server at http://<ip-address>:9990
   
 <img width="932" alt="image" src="https://user-images.githubusercontent.com/58005106/205949002-f4de317c-fe0f-42df-8a9e-1d7c2b6e8b31.png">
 
-**Part 2 - Deploy Sample Java Application**
+## Part 2 - Deploy Sample Java Application 
 
 Step 1: Download the SampleWebApp.war 
 
@@ -44,7 +44,7 @@ Step 3: Access to http://<ip-address>:8080/SampleWebApp. You should see the foll
 
 <img width="1299" alt="image" src="https://user-images.githubusercontent.com/58005106/205954011-54cc668a-5c84-4a81-bbb3-8f4adc029bf4.png">
   
-**Part 3 - Install Splunk Otel Collector**
+## Part 3 - Install Splunk Otel Collector
 
 Step 1: Navigate to Splunk Observability portal. On the left navigation, click on data management.
 
@@ -66,7 +66,7 @@ Step 5: Click on the instance and you will be able to see the resources being mo
   
 ![image](https://user-images.githubusercontent.com/58005106/206100180-045578f9-6725-400c-91c0-1a3fbd6f294c.png)
 
-**Part 4 - Instrument Sample Java Application to send traces and metrics**
+## Part 4 - Instrument Sample Java Application to send traces and metrics
 
 Step 1: Go to the JBoss server. Navigate to /opt/jboss-eap-7.4/bin. Edit the standalone.conf file. Add the following configuration at the end of the file and restart jboss
 
