@@ -68,3 +68,4 @@ Step 5: Click on the instance and you will be able to see the resources being mo
 
 **Part 4 - Instrument Sample Java Application to send traces and metrics**
 
+Step 1: Go to the JBoss server. Navigate to /opt/
