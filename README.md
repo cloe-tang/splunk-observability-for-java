@@ -50,5 +50,5 @@ Step 1: Navigate to Splunk Observability portal. On the left navigation, click o
 
 ![image](https://user-images.githubusercontent.com/58005106/205959448-b0cff3c4-de63-4e13-a898-d767d7354ffa.png)
 
-
+Step 2: Click on +Add Integration. Search for Linux
 
