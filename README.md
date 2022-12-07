@@ -82,11 +82,11 @@ Step 2: Navigate to /opt/jboss-eap-7.4/bin. Edit the standalone.conf file. Add t
 ```
 JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=lab,service.name=sampleApp -Dsplunk.profiler.enabled=true -XX:StartFlightRecording"
 ```
-> javaagent:/home/ec2-user/splunk-otel-javaagent.jar -> Load the Java Otel Agent
-> deployment.environment=lab -> Define environment
-> service.name=sampleApp -> Define service name
-> Dsplunk.profiler.enabled=true -> Enable AlwaysOn Profiling
-> -XX:StartFlightRecording -> Start JFR record. (If this is not set, no data will be sent to AlwaysOn Profiling
+- javaagent:/home/ec2-user/splunk-otel-javaagent.jar -> Load the Java Otel Agent
+- deployment.environment=lab -> Define environment
+- service.name=sampleApp -> Define service name
+- Dsplunk.profiler.enabled=true -> Enable AlwaysOn Profiling
+- -XX:StartFlightRecording -> Start JFR record. (If this is not set, no data will be sent to AlwaysOn Profiling
 
 ```  
 sudo systemctl restart jboss-eap` -> restart jboss
@@ -104,4 +104,8 @@ Step 5: Go back to APM page. Click on AlwaysOn Profiling at the bottom right pan
   
 ![image](https://user-images.githubusercontent.com/58005106/206113262-0aab1d92-18a5-4fae-8a75-06757c54d888.png)
 
+## Troubleshooting
   
+Following are some logs that you can lookout for when troubleshooting
+1. /var/log/messages -> Check if the java agent is running
+2. /opt/jboss-eap-7.4/standalone/log/server.log -> Check if there is any errors 
