@@ -8,7 +8,7 @@ The following will be covered:
 4. Instrument Sample Java Application to send metrics and traces
 5. Enable Always On Profile
 
-**Pre-requisite**
+##Pre-requisite
 1. An AWS account
 2. Sign up for Splunk Cloud Observability trial account
 
