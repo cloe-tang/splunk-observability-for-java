@@ -50,5 +50,18 @@ Step 1: Navigate to Splunk Observability portal. On the left navigation, click o
 
 ![image](https://user-images.githubusercontent.com/58005106/205959448-b0cff3c4-de63-4e13-a898-d767d7354ffa.png)
 
-Step 2: Click on +Add Integration. Search for Linux
+Step 2: Click on +Add Integration. Search for Linux. Follow through the wizard. It will provide the instruction to install the OTEL collector
+  
+![Screenshot 2022-12-07 at 1 48 55 PM](https://user-images.githubusercontent.com/58005106/206099076-9b222f6f-6393-4d36-9f61-3adcb664d207.png)
+
+Step 3: Go to your JBoss server. Execute the step by step instruction in #Step 2. If successfully install, you should see that splunk-otel-collector service is running
+  
+<img width="766" alt="image" src="https://user-images.githubusercontent.com/58005106/206099638-895ca08a-b13f-4d19-a512-d8cac36b9238.png">
+
+Step 4: Navigate to Splunk Observability Portal. Under Infrastructure Monitoring, you should see the instance being monitored
+  
+![image](https://user-images.githubusercontent.com/58005106/206099906-e3bcf4b1-9f98-4601-b710-bb74b463b560.png)
+
+  
+
 
