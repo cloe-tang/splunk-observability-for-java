@@ -22,7 +22,9 @@ Configure the instance accordingly: (Instance Type: M5 Large; Root Volume: 50)
 
 Step 2: execute the following script to change password
 
-`sudo /opt/jboss-eap-7.4/bin/add-user.sh`
+```
+sudo /opt/jboss-eap-7.4/bin/add-user.sh
+```
 
 <img width="816" alt="image" src="https://user-images.githubusercontent.com/58005106/205948506-00f6434a-b8d1-46f5-b924-25786fa7ee28.png">
 
@@ -78,8 +80,13 @@ curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/sp
 Step 2: Navigate to /opt/jboss-eap-7.4/bin. Edit the standalone.conf file. Add the following configuration at the end of the file and restart jboss
 
 ```
-JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=lab -Dsplunk.profiler.enabled=true -XX:StartFlightRecording"
+JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=lab,service.name=sampleApp -Dsplunk.profiler.enabled=true -XX:StartFlightRecording"
 ```
+> javaagent:/home/ec2-user/splunk-otel-javaagent.jar -> Load the Java Otel Agent
+> deployment.environment=lab -> Define environment
+> service.name=sampleApp -> Define service name
+> Dsplunk.profiler.enabled=true -> Enable AlwaysOn Profiling
+> -XX:StartFlightRecording -> Start JFR record. (If this is not set, no data will be sent to AlwaysOn Profiling
 
 ```  
 sudo systemctl restart jboss-eap` -> restart jboss
