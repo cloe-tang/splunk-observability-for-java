@@ -109,7 +109,6 @@ Step 5: Go back to APM page. Click on AlwaysOn Profiling at the bottom right pan
 Step 1: Navigate to /etc/otel/collector. Edit agent_config.yaml.
 
 Under receivers, add in the following configuration. The profiling name can be change to any other names.
-
 ```
   otlp/profiling:
     protocols:
@@ -157,6 +156,169 @@ receivers:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4319
+```
+
+Step 2: In the same file, add in the exporters configuration
+
+Look for exporters section and add in the following configuration. The "olly" exporter name can be any other names.
+```
+  splunk_hec/olly:
+    token: "${SPLUNK_ACCESS_TOKEN}"
+    endpoint: "https://ingest.${SPLUNK_REALM}.signalfx.com/v1/log"
+```
+After adding, the configuration should look like the following:
+```
+exporters:
+  # Traces
+  sapm:
+    access_token: "${SPLUNK_ACCESS_TOKEN}"
+    endpoint: "${SPLUNK_TRACE_URL}"
+  # Metrics + Events
+  signalfx:
+    access_token: "${SPLUNK_ACCESS_TOKEN}"
+    api_url: "${SPLUNK_API_URL}"
+    ingest_url: "${SPLUNK_INGEST_URL}"
+    # Use instead when sending to gateway
+    #api_url: http://${SPLUNK_GATEWAY_URL}:6060
+    #ingest_url: http://${SPLUNK_GATEWAY_URL}:9943
+    sync_host_metadata: true
+    correlation:
+  # Logs
+  splunk_hec:
+    token: "b1f58197-8ce3-43df-8e98-879b124cd1a4"
+  #  endpoint: "${SPLUNK_HEC_URL}"
+    endpoint: "https://prd-p-t9icu.splunkcloud.com:8088/services/collector/event"
+    source: "otel"
+    sourcetype: "otel"
+  # Send to gateway
+  splunk_hec/olly:
+    token: "${SPLUNK_ACCESS_TOKEN}"
+    endpoint: "https://ingest.${SPLUNK_REALM}.signalfx.com/v1/log"
+  otlp:
+    endpoint: "${SPLUNK_GATEWAY_URL}:4317"
+    tls:
+      insecure: true
+  # Debug
+  logging:
+    loglevel: debug
+```
+
+Step 3: In the same file, add in the service configuration
+
+Look for service section and add in the following configuration. The "olly" service name can be any other names.
+```
+logs/olly:
+      receivers: [otlp/profiling]
+      processors:
+      - memory_limiter
+      - batch
+      - resourcedetection
+      #- resource/add_environment
+      exporters: [splunk_hec/olly]
+ ```
+After adding, the configuration should look something like the following:
+```
+service:
+  extensions: [health_check, http_forwarder, zpages, memory_ballast]
+  pipelines:
+    traces:
+      receivers: [jaeger, otlp, smartagent/signalfx-forwarder, zipkin]
+      processors:
+      - memory_limiter
+      - batch
+      - resourcedetection
+      #- resource/add_environment
+      exporters: [sapm, signalfx]
+      # Use instead when sending to gateway
+      #exporters: [otlp, signalfx]
+    metrics:
+      receivers: [hostmetrics, otlp, signalfx, smartagent/signalfx-forwarder]
+      processors: [memory_limiter, batch, resourcedetection]
+      exporters: [signalfx]
+      # Use instead when sending to gateway
+      #exporters: [otlp]
+    metrics/internal:
+      receivers: [prometheus/internal]
+      processors: [memory_limiter, batch, resourcedetection]
+      # When sending to gateway, at least one metrics pipeline needs
+      # to use signalfx exporter so host metadata gets emitted
+      exporters: [signalfx]
+    logs/signalfx:
+      receivers: [signalfx, smartagent/processlist]
+      processors: [memory_limiter, batch, resourcedetection]
+      exporters: [signalfx]
+      # Use instead when sending to gateway
+      #exporters: [otlp]
+    logs/olly:
+      receivers: [otlp/profiling]
+      processors:
+      - memory_limiter
+      - batch
+      - resourcedetection
+      #- resource/add_environment
+      exporters: [splunk_hec/olly]
+    logs:
+      receivers: [fluentforward, otlp]
+      processors:
+      - memory_limiter
+      - batch
+      - resourcedetection
+      #- resource/add_environment
+      exporters: [splunk_hec]
+      # Use instead when sending to gateway
+      #exporters: [otlp]
+```
+** Important: If service configuration is not added, the newly created port will not be listening.
+
+Step 4: Restart the splunk-otel-collector service
+
+```
+sudo systemctl restart splunk-otel-collector
+```
+
+Step 5: Navigate to /opt/jboss-eap-7.4/bin. Edit standalone.conf
+
+Add in the following configuration
+```
+-Dsplunk.profiler.logs-endpoint=http://localhost:4319
+```
+After adding, the configuration should look something like that following:
+```
+JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=cloe-demo-env,service.name=cloe-sampleJavaApp -Dsplunk.profiler.enabled=true -Dsplunk.profiler.logs-endpoint=http://localhost:4319 -XX:StartFlightRecording"
+```
+
+Step 5: Restar JBOSS service
+
+```
+sudo systemctl restart jboss-eap
+```
+
+Step 6: Send application logs to Splunk Enterprise via Fluentd
+
+Navigate to /etc/otel/collector/fluentd/conf.d and create a file. In my case, my filename is jboss.conf as I am sending jboss logs (server and audit). Do the same if you are sending other application logs.
+
+```
+<source>
+  @type tail
+  @label @SPLUNK
+  <parse>
+    @type none
+  </parse>
+  path /opt/jboss-eap-7.4/standalone/log/server.log
+  pos_file /var/log/td-agent/jboss-server.pos
+  tag jboss-server
+</source>
+
+<source>
+  @type tail
+  @label @SPLUNK
+  <parse>
+    @type none
+  </parse>
+  path /opt/jboss-eap-7.4/standalone/log/audit.log
+  pos_file /var/log/td-agent/jboss-audit.pos
+  tag jboss-audit
+</source>
 ```
 
 ## Troubleshooting
