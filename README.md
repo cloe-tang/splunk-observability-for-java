@@ -104,6 +104,61 @@ Step 5: Go back to APM page. Click on AlwaysOn Profiling at the bottom right pan
   
 ![image](https://user-images.githubusercontent.com/58005106/206113262-0aab1d92-18a5-4fae-8a75-06757c54d888.png)
 
+## Part 5 - Send Always-On profiling logs to Splunk Observability and Application Logs to Splunk Cloud (Optional)
+
+Step 1: Navigate to /etc/otel/collector. Edit agent_config.yaml.
+
+Under receivers, add in the following configuration. The profiling name can be change to any other names.
+
+```
+  otlp/profiling:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4319
+```
+After adding, the configuration should look something like the following
+```
+receivers:
+  fluentforward:
+    endpoint: 127.0.0.1:8006
+  hostmetrics:
+    collection_interval: 10s
+    scrapers:
+      cpu:
+      disk:
+      filesystem:
+      memory:
+      network:
+      # System load average metrics https://en.wikipedia.org/wiki/Load_(computing)
+      load:
+      # Paging/Swap space utilization and I/O metrics
+      paging:
+      # Aggregated system process count metrics
+      processes:
+      # System processes metrics, disabled by default
+      # process:
+  jaeger:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:14250
+      thrift_binary:
+        endpoint: 0.0.0.0:6832
+      thrift_compact:
+        endpoint: 0.0.0.0:6831
+      thrift_http:
+        endpoint: 0.0.0.0:14268
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+  otlp/profiling:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4319
+```
+
 ## Troubleshooting
   
 Following are some logs that you can lookout for when troubleshooting
