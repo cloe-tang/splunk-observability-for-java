@@ -7,6 +7,7 @@ The following will be covered:
 3. Install Splunk OTEL collector
 4. Instrument Sample Java Application to send metrics and traces
 5. Enable Always On Profile
+6. Send Always-On profiling logs to Splunk Observability and app logs to Splunk Cloud
 
 ## Pre-requisite
 1. An AWS account
