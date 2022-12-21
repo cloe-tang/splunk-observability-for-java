@@ -320,6 +320,15 @@ Navigate to /etc/otel/collector/fluentd/conf.d and create a file. In my case, my
   tag jboss-audit
 </source>
 ```
+Step 7: Restart the td-agent
+
+```
+sudo systemctl restart td-agent
+```
+
+Step 8: Navigate to the Splunk Enterprise. You should see the logs streaming in with log source "otel".
+
+![image](https://user-images.githubusercontent.com/58005106/208832537-10d6bb80-922a-404e-b55e-f1c5ea820f7f.png)
 
 ## Troubleshooting
   
