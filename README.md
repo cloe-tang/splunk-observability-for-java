@@ -287,7 +287,7 @@ After adding, the configuration should look something like that following:
 JAVA_OPTS="$JAVA_OPTS -javaagent:/home/ec2-user/splunk-otel-javaagent.jar -Dotel.resource.attributes=deployment.environment=cloe-demo-env,service.name=cloe-sampleJavaApp -Dsplunk.profiler.enabled=true -Dsplunk.profiler.logs-endpoint=http://localhost:4319 -XX:StartFlightRecording"
 ```
 
-Step 5: Restar JBOSS service
+Step 5: Restart JBOSS service
 
 ```
 sudo systemctl restart jboss-eap
